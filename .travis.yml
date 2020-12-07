@@ -1,9 +1,11 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
 before_install:
-  - docker build tcsky/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t tcsky/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true tcsky/react-test npm test
